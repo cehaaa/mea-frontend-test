@@ -17,10 +17,10 @@ const routes = [
 			},
 			{
 				path: "logout",
-				action: () => {
-					localStorage.removeItem("token");
-					window.location.href = "/auth/sign-in";
-				},
+				// action: () => {
+				// 	localStorage.removeItem("token");
+				// 	window.location.href = "/auth/sign-in";
+				// },
 			},
 		],
 	},

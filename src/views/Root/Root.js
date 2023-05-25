@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
@@ -8,17 +8,20 @@ import Header from "../../components/Header/Header";
 const Root = () => {
 	const navigate = useNavigate();
 
-	// useEffect(() => {
-	// 	if (!JSON.parse(localStorage.getItem("mea_user_info"))) {
-	// 		// navigate("/auth");
+	const [userInfo, setUserInfo] = useState();
 
-	// 		console.log("hai");
-	// 	} else navigate("/courses");
-	// }, [navigate]);
+	useEffect(() => {
+		const ls = localStorage.getItem("mea_user_info");
+		const userInfoLs = JSON.parse(ls);
+
+		if (userInfoLs) {
+			setUserInfo(userInfoLs);
+		} else navigate("/auth");
+	}, [navigate]);
 
 	return (
 		<>
-			<Header />
+			{userInfo && <Header />}
 
 			<Outlet />
 		</>
