@@ -16,6 +16,7 @@ const Root = () => {
 
 		if (userInfoLs) {
 			setUserInfo(userInfoLs);
+			navigate("/courses");
 		} else navigate("/auth");
 	}, [navigate]);
 
